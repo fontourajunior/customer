@@ -4,6 +4,6 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
 
-    <include file="classpath:config/liquibase/changelog/201809242057_state_schema.xml" />
+    <include file="classpath:config/liquibase/changelog/201809242057_city_schema.xml" />
 
 </databaseChangeLog>
