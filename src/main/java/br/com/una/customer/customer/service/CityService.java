@@ -1,6 +1,8 @@
 package br.com.una.customer.customer.service;
 
 import br.com.una.customer.customer.dto.CityDTO;
+import br.com.una.customer.customer.exception.BusinessException;
+import br.com.una.customer.customer.exception.NotFoundException;
 import br.com.una.customer.customer.model.City;
 import br.com.una.customer.customer.repository.CityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +24,7 @@ public class CityService {
     }
 
     public CityDTO findOne(Integer id) throws Exception {
-        City city = repository.findById(id).orElseThrow(Exception::new);
+        City city = findById(id);
         return new CityDTO(city.getId(), city.getName(), city.getState());
     }
 
@@ -34,13 +36,18 @@ public class CityService {
     }
 
     public void update(Integer id, CityDTO cityDTO) throws Exception {
-        City city = repository.findById(id).get();
+        City city = findById(id);
         city.setName(cityDTO.getName());
         city.setState(cityDTO.getState());
         repository.save(city);
     }
 
-    public void delete(Integer id) {
+    public void delete(Integer id) throws NotFoundException, BusinessException {
+        findById(id);
         repository.deleteById(id);
+    }
+
+    private City findById(Integer id) throws NotFoundException {
+        return repository.findById(id).orElseThrow(NotFoundException::new);
     }
 }
