@@ -30,6 +30,18 @@ Para executar o projeto é necessária a instalação das seguintes ferramentas:
 
 ## 2. Executando o Projeto
 
+Iniciar o Docker Compose para subir o banco de dados relacional (PostgreSQL), através do seguinte comando:
+
+```sh
+$ docker-compose up
+```
+
+Para encerrar o banco de dados relacional (PostgreSQL), utilize o seguinte comando:
+
+```sh
+$ docker-compose down
+```
+
 Após baixar o projeto, e as ferramentas necessárias, para executá-lo é necessário rodar os seguintes comandos dentro da pasta raiz.
 
 

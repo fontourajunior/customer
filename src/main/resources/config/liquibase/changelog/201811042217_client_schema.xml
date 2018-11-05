@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+	xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+	<changeSet id="201811042217" author="maxwell">
+		<createTable tableName="client">
+			<column name="id" type="bigint" autoIncrement="true">
+				<constraints primaryKey="true" nullable="false" />
+			</column>
+			<column name="name" type="varchar(32)">
+				<constraints nullable="false" />
+			</column>
+			<column name="fone" type="varchar(11)">
+				<constraints nullable="false" />
+			</column>
+			<column name="cpf" type="varchar(11)">
+				<constraints nullable="false" />
+			</column>
+			<column name="city" type="bigint">
+				<constraints referencedColumnNames="id"
+					referencedTableName="city" foreignKeyName="city_id"
+					nullable="false" />
+			</column>
+			<column name="email" type="varchar(64)">
+				<constraints nullable="false" />
+			</column>
+			<column name="gender" type="char">
+				<constraints nullable="false" />
+			</column>
+			<column name="birth" type="date">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+	</changeSet>
+
+</databaseChangeLog>
