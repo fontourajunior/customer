@@ -1,15 +1,20 @@
 package br.com.una.customer.customer.model;
 
 import br.com.una.customer.customer.enumeration.State;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
+@Table(name = "city", schema = "public")
 public class City {
 
     @Id
@@ -19,6 +24,10 @@ public class City {
     private String name;
 
     private State state;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "city")
+    private List<Customer> customers;
 
     public City(String name, State state) {
         this.name = name;
