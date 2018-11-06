@@ -13,7 +13,8 @@ Contendo as seguintes tecnologias para desenvolvimento:
 
 O projeto utiliza um banco PostgreSQL de teste e para profile de desevolvimento, apesar de que outros bancos podem ser configurados facilmente.
 
-O banco PostgreSQL esta configurado no Docker Compose, mas também pode ser instalado através do link oficial [PostgreSQL](https://www.postgresql.org/download/linux/).
+O banco PostgreSQL esta configurado no Docker Compose, mas também pode ser instalado através do link oficial [PostgreSQL](https://www.postgresql.org/download/linux/)
+e configurado manualmente.
 
 ## 1. Requisitos e Configurações
 
@@ -24,14 +25,26 @@ Para executar o projeto é necessária a instalação das seguintes ferramentas:
     3. Docker
     4. Docker Compose
     5. PostgreSQL
-
-[Download Docker](https://docs.docker.com/install/linux/docker-ce/ubuntu/)
-[Download Docker Compose](https://docs.docker.com/compose/install/)
+    
+  - [Download JDK 1.8](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
+  - [Download Docker](https://docs.docker.com/install/linux/docker-ce/ubuntu/)
+  - [Download Docker Compose](https://docs.docker.com/compose/install/)
 
 ## 2. Executando o Projeto
 
-Após baixar o projeto, e as ferramentas necessárias, para executá-lo é necessário rodar os seguintes comandos dentro da pasta raiz.
+Iniciar o Docker Compose para subir o banco de dados relacional (PostgreSQL), dentro da pasta raiz do projeto, através do seguinte comando:
 
+```sh
+$ docker-compose up
+```
+
+Para encerrar o banco de dados relacional (PostgreSQL), dentro da pasta raiz do projeto, utilize o seguinte comando:
+
+```sh
+$ docker-compose down
+```
+
+Após baixar o projeto, e as ferramentas necessárias, para executá-lo é necessário rodar os seguintes comandos dentro da pasta raiz do projeto.
 
 ```sh
 $ maven clean build
