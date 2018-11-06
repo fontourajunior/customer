@@ -1,9 +1,7 @@
 package br.com.una.customer.customer.resource;
 
-import br.com.una.customer.customer.dto.CityDTO;
-import br.com.una.customer.customer.model.City;
-import br.com.una.customer.customer.repository.CityRepository;
-import br.com.una.customer.customer.service.CityService;
+import br.com.una.customer.customer.dto.CustomerDTO;
+import br.com.una.customer.customer.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -21,16 +19,16 @@ import java.net.URI;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/city")
-public class CityController {
+@RequestMapping(value = "/customers")
+public class CustomerController {
 
     @Autowired
-    private CityService cityService;
+    private CustomerService customerService;
 
     @PostMapping
-    public ResponseEntity<Void> create(@Valid @RequestBody CityDTO cityDTO) {
+    public ResponseEntity<Void> create(@Valid @RequestBody CustomerDTO customerDTO) throws Exception {
 
-        Integer id = cityService.create(cityDTO);
+        Integer id = customerService.create(customerDTO);
         URI uri = ServletUriComponentsBuilder
                 .fromCurrentRequest()
                 .path("/{id}")
@@ -41,24 +39,24 @@ public class CityController {
     }
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<CityDTO> findOne(@PathVariable Integer id) throws Exception {
-        return ResponseEntity.ok().body(cityService.findOne(id));
+    public ResponseEntity<CustomerDTO> findOne(@PathVariable Integer id) throws Exception {
+        return ResponseEntity.ok().body(customerService.findOne(id));
     }
 
     @GetMapping
-    public ResponseEntity<List<CityDTO>> findAll() {
-        return ResponseEntity.ok().body(cityService.findAll());
+    public ResponseEntity<List<CustomerDTO>> findAll() {
+        return ResponseEntity.ok().body(customerService.findAll());
     }
 
     @PutMapping(value = "/{id}")
-    public ResponseEntity<Void> update(@Valid @RequestBody CityDTO cityDTO, @PathVariable Integer id) throws Exception {
-        cityService.update(id, cityDTO);
+    public ResponseEntity<Void> update(@Valid @RequestBody CustomerDTO customerDTO, @PathVariable Integer id) throws Exception {
+        customerService.update(id, customerDTO);
         return ResponseEntity.noContent().build();
     }
 
     @DeleteMapping(value = "/{id}")
-    public ResponseEntity<Void> delete(@PathVariable Integer id) throws Exception {
-        cityService.delete(id);
+    public ResponseEntity<Void> delet(@PathVariable Integer id) throws Exception {
+        customerService.delete(id);
         return ResponseEntity.noContent().build();
     }
 

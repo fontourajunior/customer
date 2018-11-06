@@ -47,7 +47,7 @@ public class CityService {
         repository.deleteById(id);
     }
 
-    private City findById(Integer id) throws NotFoundException {
+    public City findById(Integer id) throws NotFoundException {
         return repository.findById(id).orElseThrow(NotFoundException::new);
     }
 }

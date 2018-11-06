@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <changeSet id="201811052950" author="antonio">
+        <createTable tableName="customer">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+
+            <column name="name" type="varchar(64)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="city_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="phone" type="varchar">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="public_place" type="varchar">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="number" type="number">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="neighborhood" type="varchar">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="cep" type="varchar">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="email" type="varchar">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="genre" type="varchar">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="birth" type="date">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="cpf" type="varchar">
+                <constraints nullable="false"/>
+            </column>
+
+        </createTable>
+
+        <addForeignKeyConstraint baseColumnNames="city_id"
+                                 baseTableName="customer"
+                                 constraintName="fk_city_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="city"/>
+
+    </changeSet>
+
+</databaseChangeLog>
